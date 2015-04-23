@@ -22,8 +22,8 @@ block body
         each val in tiles
             div.tile
               a(href= val.url)
-                h3.tileUrl Url: #{val.url}          
-                h3.tileTags Tags: #{val.tags}
+                a.tileUrl  #{val.url}          
+                h3.tileTags #{val.tags}
   #domoMessage
     
     h3

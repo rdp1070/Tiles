@@ -15,8 +15,6 @@ $(document).ready(function() {
             data: data,
             dataType: "json",
             success: function(result, status, xhr) {
-                $("#domoMessage").animate({width:'hide'},350);
-
                 window.location = result.redirect;
             },
             error: function(xhr, status, error) {
@@ -30,15 +28,13 @@ $(document).ready(function() {
     $("#signupSubmit").on("click", function(e) {
         e.preventDefault();
     
-        $("#domoMessage").animate({width:'hide'},350);
-    
         if($("#user").val() == '' || $("#pass").val() == '' || $("#pass2").val() == '') {
             handleError("RAWR! All fields are required");
             return false;
         }
         
         if($("#pass").val() !== $("#pass2").val()) {
-            handleError("RAWR! Passwords do not match");
+            handleError("Passwords do not match");
             return false;           
         }
 
