@@ -6,6 +6,9 @@ var favicon = require('serve-favicon');
 var cookieParser = require('cookie-parser'); 
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var session = require('express-session');
+var RedisStore = require('connect-redis')(session);
+var url = require('url');
 
 var dbURL = process.env.MONGOLAB_URI || "mongodb://localhost/TileMaker";
 
@@ -15,6 +18,18 @@ var db = mongoose.connect(dbURL, function(err) {
         throw err;
    }
 });
+
+var redisURL = {
+	hostname: 'localhost',
+	port: 6379
+};
+
+var redisPASS;
+
+if(process.env.REDISCLOUD_URL) {
+	redisURL = url.parse(process.env.REDISCLOUD_URL);
+	redisPASS = redisURL.auth.split(":")[1];
+}
 
 //pull in our routes
 var router = require('./router.js'); 
@@ -28,6 +43,16 @@ app.use(compression());
 app.use(bodyParser.urlencoded({
     extended: true
 }));    
+app.use(session({
+	store: new RedisStore({
+		host: redisURL.hostname,
+		port: redisURL.port,
+		pass: redisPASS
+	}),
+	secret: 'Tile Secret',
+	resave: true, 
+	saveUninitialized: true
+}));
 app.set('view engine', 'jade'); 
 app.set('views', __dirname + '/views'); 
 app.use(favicon(__dirname + '/../client/img/favicon.png')); 

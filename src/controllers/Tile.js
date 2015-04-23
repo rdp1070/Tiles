@@ -1,33 +1,33 @@
 var _ = require('underscore');
 var models = require('../models');
 
-var Tile =  model.Domo;
+var Tile =  models.Tile.TileModel;
 
 var makerPage = function(req, res) {
 
-	Tile.TileModel.findByOwner(req.session.account._id, function(err, docs) {
+	Tile.findAll(function(err, docs) {
 		if(err) {
 			console.log(err);
 			return res.status(400).json({error: 'An error occurred'});
-		}		
-	})
-    res.render('app', {tiles: docs});
+		}	
+		res.render('app', {tiles: docs});	
+	});
+   
 };
 
 var makeTile = function(req, res) {
-
-	if(!req.body.name || !req.body.age) {
-		return res.status(400).json({error: "Both name and age are needed"});
+	if(!req.body.url || !req.body.tags) {
+		return res.status(400).json({error: "Both url and tags are needed"});
 	}
 
 	var tileData = {
-		name: req.body.name,
-		age: req.body.age,
+		url: req.body.url,
+		tags: req.body.tags,
 		owner: req.session.account._id
 	};
 
-	var newTitle = new Tile.TileModel(tileData);
-
+	var newTile = new Tile(tileData);
+	
 	newTile.save(function(err) {
 		if(err) {
 			console.log(err);

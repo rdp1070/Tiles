@@ -8,17 +8,26 @@ block body
     .navlink
       a(href="/logout") Log out
   section#makeDomo
-    form#domoForm(class="domoForm", name="domoForm", action="/maker", method="POST")
-      label(for="name") Name: 
-      input#domoName(type="text", name="name", placeholder="Domo Name")
-      label(for="age") Age: 
-      input#domoAge(type="text", name="age", placeholder="Domo Age")
-      a#makeDomoSubmit(class="makeDomoSubmit", href="#") Make Domo
-  section#domos
+    form#tileForm(class="tileForm", name="tileForm", action="/maker", method="POST")
+      label(for="url") URL: 
+      input#tileUrl(type="text", name="url", placeholder="www.fake-website.net")
+      label(for="tags") Tags: 
+      input#tileTags(type="text", name="tags", placeholder="cats, domo, etc.")
+      a#makeTileSubmit(class="makeTileSubmit", href="#") Make Tile
+  section#tiles
+    if !tiles || tiles.length == 0
+        div.tile
+            h3.emptyTile No Tiles yet
+    else
+        each val in tiles
+            div.tile
+              a(href= val.url)
+                h3.tileUrl Url: #{val.url}          
+                h3.tileTags Tags: #{val.tags}
   #domoMessage
     
     h3
       span#errorMessage
     
 block scripts
-        script(src="/assets/maker.js")
+        script(src="/assets/tile.js")

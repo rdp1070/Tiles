@@ -1,21 +1,19 @@
 var mongoose = require('mongoose');
 var _ = require('underscore');
 
-var tileModel;
-
+var TileModel;
 
 var TileSchema = new mongoose.Schema({
-	name: {
+	url: {
 		type: String,
 		required: true,
-		trim: true,
-		set: setName
+		trim: true
 	},
 
-	age: {
-		type: Number,
-		min: 0,
-		required: true
+	tags: {
+		type: String,
+		required: true,
+		trim: true
 	},
 
 	owner: {
@@ -33,8 +31,8 @@ var TileSchema = new mongoose.Schema({
 
 TileSchema.methods.toAPI = function() {
 	return {
-		name: this.name,
-		age: this.age
+		url: this.url,
+		tags: this.tags
 	};
 };
 
@@ -43,7 +41,11 @@ TileSchema.statics.findByName = function(name, callback) {
 		owner: mongoose.Types.ObjectId(ownderId)
 	};
 
-	return TileModel.find(search).select("name age").exec(callback);
+	return TileModel.find(search).select("url tags").exec(callback);
+};
+
+TileSchema.statics.findAll = function(callback) {
+	return TileModel.find().select("url tags").exec(callback);
 };
 
 

@@ -35,7 +35,8 @@ var AccountSchema = new mongoose.Schema({
 
 AccountSchema.methods.toAPI = function() {
     return {
-        username: this.username
+        username: this.username,
+        _id: this._id 
     };
 };
 

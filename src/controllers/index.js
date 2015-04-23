@@ -1,2 +1,2 @@
 module.exports.Account = require('./Account.js');
-module.exports.Domo = require('./Tile.js');
+module.exports.Tile = require('./Tile.js');
