@@ -17,13 +17,14 @@ block body
   section#tiles
     if !tiles || tiles.length == 0
         div.tile
-            h3.emptyTile No Tiles yet
+            span.emptyTile No Tiles yet
     else
         each val in tiles
             div.tile
-              a(href= val.url)
-                a.tileUrl  #{val.url}          
-                h3.tileTags #{val.tags}
+              a(href= val.url) 
+                img(src= val.url, alt = val.url, onerror="this.src='/assets/default.png'")  
+                span.tileTags Tags: #{val.tags}
+                      
   #domoMessage
     
     h3
