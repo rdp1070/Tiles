@@ -36,7 +36,7 @@ TileSchema.methods.toAPI = function() {
 	};
 };
 
-TileSchema.statics.findByName = function(name, callback) {
+TileSchema.statics.findByName = function(ownderId, callback) {
 	var search = {
 		owner: mongoose.Types.ObjectId(ownderId)
 	};

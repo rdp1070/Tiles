@@ -6,17 +6,9 @@ block body
     a(href="/maker")
       img#logo(src="/assets/img/face.png", alt="face logo")
     .navlink
-      a(href="/myTiles") My Tiles
+      a(href="/maker") Tiles
     .navlink
       a(href="/logout") Log out
-
-  section#makeDomo
-    form#tileForm(class="tileForm", name="tileForm", action="/maker", method="POST")
-      label(for="url") URL: 
-      input#tileUrl(type="text", name="url", placeholder="www.fake-website.net")
-      label(for="tags") Tags: 
-      input#tileTags(type="text", name="tags", placeholder="cats, domo, etc.")
-      a#makeTileSubmit(class="makeTileSubmit", href="#") Make Tile
   section#tiles
     if !tiles || tiles.length == 0
         div.tile
