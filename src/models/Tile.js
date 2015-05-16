@@ -24,7 +24,9 @@ var TileSchema = new mongoose.Schema({
 
 	createdData: {
 		type: Date,
-		default: Date.now
+		default: Date.now,
+		// This is where I tell it it's ttl
+		expires: 3600
 	}
 
 });
@@ -36,13 +38,23 @@ TileSchema.methods.toAPI = function() {
 	};
 };
 
-TileSchema.statics.findByName = function(ownderId, callback) {
+TileSchema.statics.findByName = function(ownerId, callback) {
 	var search = {
-		owner: mongoose.Types.ObjectId(ownderId)
+		owner: mongoose.Types.ObjectId(ownerId)
 	};
 
 	return TileModel.find(search).select("url tags").exec(callback);
 };
+
+/*
+TileSchema.statics.findByTag = function(tags, callback) {
+	var search = {
+		tags: mongoose.Types.ObjectId(tags)
+	};
+
+	return TileModel.find(search).select("url tags").exec(callback);
+};
+*/
 
 TileSchema.statics.findAll = function(callback) {
 	return TileModel.find().select("url tags").exec(callback);

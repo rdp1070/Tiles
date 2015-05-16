@@ -39,7 +39,7 @@ var makeTile = function(req, res) {
 	};
 
 	var newTile = new Tile(tileData);
-	
+
 	newTile.save(function(err) {
 		if(err) {
 			console.log(err);
@@ -49,9 +49,6 @@ var makeTile = function(req, res) {
 		res.json({redirect: '/maker'});
 	});
 };
-
-
-
 
 module.exports.makerPage = makerPage;
 module.exports.myTilesPage = myTilesPage;
