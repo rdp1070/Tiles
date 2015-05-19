@@ -15,6 +15,16 @@ var makerPage = function(req, res) {
    
 };
 
+var searchPage = function(req, res) {
+	Tile.findByTag( req.body.searchQueryBox.searchQuery, function(err, docs) {
+		if(err){
+			console.log(err);
+			return res.status(400).json({ error: 'An error occurred'});
+		}
+		res.render('searchPage', {tiles: docs});
+	});
+};
+
 var myTilesPage = function(req, res) {
 
 	Tile.findByName( req.session.account._id , function(err, docs) {
@@ -53,3 +63,4 @@ var makeTile = function(req, res) {
 module.exports.makerPage = makerPage;
 module.exports.myTilesPage = myTilesPage;
 module.exports.make = makeTile;
+module.exports.searchPage = searchPage;

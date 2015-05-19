@@ -46,15 +46,17 @@ TileSchema.statics.findByName = function(ownerId, callback) {
 	return TileModel.find(search).select("url tags").exec(callback);
 };
 
-/*
+
 TileSchema.statics.findByTag = function(tags, callback) {
+	// define a search variable 
 	var search = {
+		// search for things in the tags
 		tags: mongoose.Types.ObjectId(tags)
 	};
 
 	return TileModel.find(search).select("url tags").exec(callback);
 };
-*/
+
 
 TileSchema.statics.findAll = function(callback) {
 	return TileModel.find().select("url tags").exec(callback);

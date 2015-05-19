@@ -6,9 +6,12 @@ block body
     a(href="/maker")
       img#logo(src="/assets/img/face.png", alt="face logo")
     .navlink
-      a(href="/maker") Tiles
+      a(href="/myTiles") My Tiles
     .navlink
       a(href="/logout") Log out
+    form#searchForm(class="searchForm", name="searchForm", action="/search" method="POST")
+    input#searchQueryBox(type="text", name="searchQuery", placeholder="Search")
+    a#searchTileSubmit(class="searchTileSubmit", href="#") Search
 
   section#makeTile
     form#tileForm(class="tileForm", name="tileForm", action="/maker", method="POST")
@@ -17,6 +20,7 @@ block body
       label(for="tags") Tags: 
       input#tileTags(type="text", name="tags", placeholder="cats, domo, etc.")
       a#makeTileSubmit(class="makeTileSubmit", href="#") Make Tile
+
 
   section#tiles
     if !tiles || tiles.length == 0

@@ -14,6 +14,8 @@ var router = function(app) {
     app.get("/maker", controllers.Tile.makerPage);
     app.post("/maker", controllers.Tile.make);
 
+   // app.get("/search", controllers.Tile.searhPage);
+
     app.get("/", controllers.Account.loginPage);
 
     app.get("/myTiles", controllers.Tile.myTilesPage);  

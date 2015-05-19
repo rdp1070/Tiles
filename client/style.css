@@ -3,7 +3,7 @@ html, body {
     width: 100%;
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    overflow: scroll;
 }
 
 #logo {
@@ -15,19 +15,20 @@ html, body {
 }
 
 nav {
-    width: 100%;
-    height: 50px;
-    background-color: #55acee;
+    width: 100px;
+    height: 70%;
+    background-color: #3333CC;
+    border-bottom-right-radius: 5px;
+
 }
 
 nav:nth-child(1) {
-    padding-left: 25px;
+    padding-left: 20px;
 }
 
 .navlink {
     padding: 5px;
     padding-top: 12px;
-    padding-left: 20px;
     color: white;
     font-size: 1.3em;
     float: left;
@@ -38,7 +39,7 @@ nav:nth-child(1) {
     text-decoration: none;
     padding: 5px;
     border-radius: 4px;
-    background-color: #55acee;
+    background-color: #3333CC;
     transition: background-color 0.4s ease;
 }
 
@@ -48,12 +49,12 @@ nav:nth-child(1) {
 }
 
 .tileForm {
-    border: 2px solid #338acc;
     height: 30px;
     width: 700px;
     margin-top:0px;
     padding-top:10px;
-    background-color: #55acee;
+    background-color: #3333CC;
+    border-bottom-right-radius: 5px;
 }
 
 .tileForm label , #makeTileSubmit {
@@ -97,7 +98,7 @@ nav:nth-child(1) {
     margin-top: 14px;
     font-size: 1.2em;
     width: 90px;
-    background-color: #55acee;
+    background-color: #3333CC;
     border-radius: 2px;
     padding: 3px 0px;
     color: black;
@@ -122,7 +123,7 @@ nav:nth-child(1) {
 
 #user:focus, #pass:focus, #pass2:focus {
     outline: none;
-    box-shadow: 0px 0px 1px 1px #55acee;
+    box-shadow: 0px 0px 1px 1px #3333CC;
 }
 
 #tileMessage {
@@ -177,9 +178,9 @@ nav:nth-child(1) {
 
 div.tile {
     border: solid 2px;
-    background-color: #55acee;
-    width:20%;
-    height:20%; 
+    background-color: #3333CC;
+    width:165px;
+    height:165px; 
     display: inline-block;
     overflow: hidden;
     position: relative;
@@ -218,6 +219,24 @@ div.tile img {
     height:100%;
     display:inline-block;
     position: absolute;
-    color: pink;
     font:40px Impact;
+}
+
+#tiles {
+    position: fixed;
+    top: 10%;
+    left: 120px;
+}
+
+#makeTile {
+    position: fixed;
+    top: 0px;
+    left: 120px;
+    width: 100%;
+}
+
+#login , #signup{
+    position: fixed;
+    top: 0px;
+    left: 170px; 
 }
